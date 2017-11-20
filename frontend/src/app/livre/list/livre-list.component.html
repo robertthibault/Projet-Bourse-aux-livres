@@ -1,0 +1,24 @@
+<h2>Liste des Livres</h2>
+<br/>
+<button (click)="create()"class="btn btn-primary">Créer un nouveau livre</button>
+<br/><br/>
+<div>
+  <div>
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input #gb type="text" pInputText size="50" placeholder="Filtre">
+    </div>
+
+    <p-dataTable [value]="livres" [rows]="6" [paginator]="true" [globalFilter]="gb" #dt>
+      <p-column field="id" header="Identifiant" [sortable]="true"></p-column>
+      <p-column field="reflivre.isbn" header="ISBN" [sortable]="true"></p-column>
+      <p-column field="reflivre.libelle" header="Titre" [sortable]="true"></p-column>
+      <p-column field="etat.libelle" header="Etat" [sortable]="true"></p-column>
+      <p-column field="modif" header="Action" >
+        <ng-template let-livre="rowData" pTemplate="body" >
+          <button type="button" pButton (click)="show(livre.id)" class="btn btn-primary">Consulter</button>
+          <!--<button type="button" pButton (click)="edit(livre.id)" class="btn btn-primary">Modifier</button>-->
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>

@@ -1,0 +1,43 @@
+<h2>Liste des élèves</h2>
+<br/>
+<button (click)="create()" class="btn btn-primary">Créer un nouvel élève</button>
+<br/>
+<br/>
+<div>
+  <!--<div>
+    <input type='text' style='padding:8px;margin:15px auto;width:30%;'
+           placeholder='Rechercher sur un élève...'
+           (keyup)='updateFilter($event)'
+    />
+  </div>
+
+  <ngx-datatable #table class="material"     [rows]="eleves"      [columnMode]="'force'"
+                  [columns]="columns"  [headerHeight]="50"  [footerHeight]="50"
+                  [rowHeight]="'auto'" [offset]="offset"    [limit]="limit">
+  </ngx-datatable>
+
+  <ng-template #actionLink let-row="row" let-value="value" let-i="index">
+    <div>
+      <a (click)="show(row.id)" class="btn btn-primary">Consulter</a>
+      <a (click)="edit(row.id)" class="btn btn-primary">Modifier</a>
+    </div>
+  </ng-template>
+
+  Gautier président <3
+-->
+  <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+    <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+    <input #gb type="text" pInputText size="50" placeholder="Filtre">
+  </div>
+  <p-dataTable [value]="eleves" [rows]="7" [paginator]="true" [globalFilter]="gb" #dt>
+    <p-column field="id" header="Identifiant" [sortable]="true"></p-column>
+    <p-column field="nom" header="Nom" [sortable]="true"></p-column>
+    <p-column field="prenom" header="Prenom" [sortable]="true"></p-column>
+    <p-column field="modif" header="Action" >
+      <ng-template let-eleve="rowData" pTemplate="body">
+        <button type="button" pButton (click)="show(eleve.id)" class="btn btn-primary">Consulter</button>
+        <button type="button" pButton (click)="edit(eleve.id)" class="btn btn-primary">Modifier</button>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+</div>

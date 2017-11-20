@@ -1,0 +1,18 @@
+<h2 *ngIf="this.matiere">Détail de la matiere {{matiere.id}} {{matiere.libelle}}</h2>
+<div *ngIf="this.matiere">
+  <table class="table">
+    <tr>
+      <th><label>ID : </label></th>
+      <th><label>{{matiere.id}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Libelle :</label></th>
+      <th><label>{{matiere.libelle}} </label></th>
+    </tr>
+  </table>
+  <br/>
+  <span>
+    <button class="btn btn-danger" (click)="cancel()">Annuler</button>
+  </span>
+  <br/>
+</div>

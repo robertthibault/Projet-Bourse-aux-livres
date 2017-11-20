@@ -1,0 +1,106 @@
+<div class="container">
+  <h2>Gestion des commandes</h2>
+
+  <p-tabView *ngIf='this.eleves'>
+
+    <!-- Paneau de sélection de l'élève' -->
+    <p-tabPanel header="Choix élève" [selected]="true">
+
+      <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input #gbElv type="text" pInputText size="50" placeholder="Rechercher dans le tableau">
+      </div>
+
+      <p-dataTable [value]="eleves" [rows]="10" [paginator]="true" [globalFilter]="gbElv" #dt selectionMode="single" [(selection)]="selectEleve"
+        dataKey="id" (onRowSelect)="onRowSelect($event)">
+        <p-header>Liste des élèves</p-header>
+        <p-column field="prenom" header="Prénom" [filter]="true" filterMatchMode="contains"></p-column>
+        <p-column field="nom" header="Nom" [filter]="true" filterMatchMode="contains"></p-column>
+        <p-column field="dateNaissance" header="Date de naissance"></p-column>
+        <p-column field="mail" header="mail"></p-column>
+        <p-column field="adherent.nom" header="Adhérent en charge"></p-column>
+      </p-dataTable>
+
+    </p-tabPanel>
+
+    <!-- Paneau de sélection de l'année à venir pour l'élève' -->
+    <p-tabPanel header="Changement de l'année" [disabled]="!this.selectEleve || !this.selectEleve.adherent || !this.listeClasses || !this.classeElv">
+      <div *ngIf="this.selectEleve"> Cette année, {{this.selectEleve.prenom}} {{this.selectEleve.nom}} était en :
+        <span *ngIf="this.classeElv"> {{ this.classeElv.libelle }}</span>
+      </div>
+      <p-dropdown #ddClass [style]="{'width':'100%'}" [options]="listeClasses" [(ngModel)]="selectedClasse" placeholder="Selectionnez une classe pour l'année prochaine'">
+      </p-dropdown>
+      <button [disabled]="!ddClass.value" class="btn btn-success" (click)="changeClasse({id: ddClass.value, libelle: ddClass.label})">Valider le changement de niveau</button>
+    </p-tabPanel>
+
+    <!-- Paneau des entrées -->
+    <p-tabPanel header="Entrée" [disabled]="!this.selectEleve || !this.selectEleve.adherent">
+
+      <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input #gbEnt type="text" pInputText size="50" placeholder="Global Filter">
+      </div>
+      <p-dataTable [value]="livresRendre" [rows]="20" [paginator]="true" [globalFilter]="gbEnt" #dtEnt>
+        <p-header *ngIf="this.selectEleve">Liste des livres à rendre par : {{this.selectEleve.prenom}} {{this.selectEleve.nom}}</p-header>
+        <p-column field="reflivre.libelle" header="Libellé"></p-column>
+        <p-column field="reflivre.isbn" header="ISBN"></p-column>
+        <p-column field="id" header="n° livre" [filter]="true" [style]="{'overflow':'visible'}" filterMatchMode="equals">
+        </p-column>
+        <p-column field="etat.libelle" header="Etat" [filter]="true" filterMatchMode="equals" [style]="{'overflow':'visible'}">
+          <ng-template pTemplate="filter" let-col>
+            <p-dropdown placeholder='Choisissez un état' [options]="etats" [style]="{'width':'100%'}" (onChange)="dtEnt.filter($event.value,col.field,col.filterMatchMode)"
+              styleClass="ui-column-filter">
+            </p-dropdown>
+          </ng-template>
+        </p-column>
+        <p-column field="etat.libelle" header="Etat du livre rendu" [filter]="true" filterMatchMode="equals" [style]="{'overflow':'visible'}">
+          <ng-template pTemplate="body" let-col>
+            <p-dropdown [options]="etats" [style]="{'width':'100%'}" styleClass="ui-column-filter">
+              <!-- placeholder='Choisissez un état' // [(ngModel)]="Neuf" -->
+            </p-dropdown>
+          </ng-template>
+        </p-column>
+        <p-column  header="À Rendre">
+          <ng-template let-livre="rowData" pTemplate="body">
+            <button type="button" pButton (click)="DateRachat(livre.id)" class="btn btn-success">Rendu</button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+    </p-tabPanel>
+
+    <!-- Paneau des Sorties -->
+    <p-tabPanel header="Sortie" [disabled]="!this.selectEleve || !this.selectEleve.adherent">
+
+      <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input #gbSor type="text" pInputText size="50" placeholder="Global Filter">
+      </div>
+
+      <p-dataTable [value]="livresSelec" [rows]="20" [paginator]="true" [globalFilter]="gbSor" #dtSor>
+        <p-header *ngIf="this.selectEleve">Liste des livres disponibles</p-header>
+        <p-column field="reflivre.libelle" header="Libellé"></p-column>
+        <p-column field="reflivre.isbn" header="ISBN"></p-column>
+        <p-column field="reflivre.editeur.nom" header="Editeur"></p-column>
+        <p-column header="Livres disponibles" [style]="{'overflow':'visible'}">
+          <ng-template let-lvrSel="rowData" pTemplate="body">
+            <div class='col-md-5'>Livre : {{dd.value ? dd.value : 'aucun'}}</div>
+            <div class='col-md-7'>
+              <p-dropdown #dd [options]="lvrSel.lvrEta" [style]="{'width':'100%'}" placeholder='Choisissez un livre'>
+                <ng-template let-lvrEta pTemplate="lvrChosen">
+                  {{lvrEta.value}} - {{lvrEta.label}}
+                </ng-template>
+              </p-dropdown>
+            </div>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+
+    </p-tabPanel>
+
+    <!-- Paneau de facturation -->
+    <p-tabPanel header="Facturation" [disabled]="!this.selectEleve || !this.selectEleve.adherent">
+      Composant de faturation isi la fmaille bonjour.
+    </p-tabPanel>
+
+  </p-tabView>
+</div>

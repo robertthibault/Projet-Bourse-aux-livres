@@ -1,0 +1,21 @@
+<div *ngIf='this.reflivre' class="container">
+    <h1>Modifier les informations du livre:  {{reflivre.libelle}} {{reflivre.auteur}}</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+        <label>Libelle du reflivre</label>
+    <input type="text" class="form-control" formControlName="libelle" required>
+    <label>Auteur</label>
+    <input type="text" class="form-control" formControlName="auteur">
+      <label>Editeur</label>
+      <p-dropdown formControlName="editeur" [style]="{'width':'100%'}" [options]="lesEditeurs" [(ngModel)]="selectedEditeur" (placeholder)="selectedEditeur"></p-dropdown>
+      <label>Matiere</label>
+      <p-dropdown formControlName="matiere" [style]="{'width':'100%'}" [options]="lesMatieres" [(ngModel)]="selectedMatiere" (placeholder)="selectedMatiere"></p-dropdown>
+    <label>ISBN</label>
+    <input type="text" class="form-control" formControlName="isbn">
+      <br/>
+      <span>
+        <button type="submit" class="btn btn-success">Modifier</button>
+        <button class="btn btn-danger" (click)="cancel()">Annuler</button>
+      </span>
+    </form>
+  <br/>
+</div>

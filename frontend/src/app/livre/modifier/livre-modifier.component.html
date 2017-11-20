@@ -1,0 +1,13 @@
+<div *ngIf='this.livre' class="container">
+    <h1>Modifier les informations du livre:  {{livre.libelle}} {{livre.auteur}}</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+      <br/>
+      <span>
+        <button type="submit" class="btn btn-success">Modifier</button>
+        <button (click)="cancel()">Annuler</button>
+      </span>
+    </form>
+  <br/>
+
+
+</div>

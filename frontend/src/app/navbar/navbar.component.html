@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bourse aux Livres</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]=" ['accueil'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Accueil
+        </a></li>
+        <li role="separator" class="divider"></li>
+        <li><a [routerLink]=" ['adherent'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Adhérents
+        </a></li>
+        <li><a [routerLink]=" ['eleve'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Élèves
+        </a></li>
+        <li><a [routerLink]=" ['livre'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Livres
+        </a></li>
+        <li><a [routerLink]=" ['reflivre'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          RefLivres
+        </a></li>
+        <li role="separator" class="divider"></li>
+        <li><a [routerLink]=" ['commande'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Commandes
+        </a></li>
+        <li> <a [routerLink]=" ['classe'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Classe
+        </a></li>
+        <li> <a [routerLink]=" ['matiere'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Matières
+        </a></li>
+        <li> <a [routerLink]=" ['editeur'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Editeurs
+        </a></li>
+        <li> <a [routerLink]=" ['apropos'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          A propos
+        </a></li>
+      </ul>
+
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>

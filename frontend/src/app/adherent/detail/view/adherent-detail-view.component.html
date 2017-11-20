@@ -1,0 +1,50 @@
+      <div *ngIf="this.adherent">
+        <table class="table">
+          <tr>
+            <th><label>ID : </label></th>
+            <th><label>{{adherent.id}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Nom :</label></th>
+            <th><label>{{adherent.nom}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Prenom :</label></th>
+            <th><label>{{adherent.prenom}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Adresse :</label></th>
+            <th><label>{{adherent.adresse}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Code postal :</label></th>
+            <th><label>{{adherent.codePostal}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Ville :</label></th>
+            <th><label>{{adherent.ville}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Mail :</label></th>
+            <th><label>{{adherent.mail}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Téléphone :</label></th>
+            <th><label>{{adherent.tel}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Téléphone secondaire :</label></th>
+            <th><label>{{adherent.tel2}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Comité :</label></th>
+            <th ><label *ngIf='adherent.comite==true'>OUI </label>
+            <label *ngIf='adherent.comite==false'>NON </label></th>
+          </tr>
+          <tr>
+            <th><label>Conseil de classe :</label></th>
+            <th ><label *ngIf='adherent.conseil==true'>OUI </label>
+            <label *ngIf='adherent.conseil==false'>NON </label></th>
+          </tr>
+        </table>
+      </div>

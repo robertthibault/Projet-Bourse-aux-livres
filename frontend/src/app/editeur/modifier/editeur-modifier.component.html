@@ -1,0 +1,16 @@
+<div *ngIf='this.editeur' class="container">
+    <h1>Modifier les informations de l'éditeur : {{editeur.id}} - {{editeur.nom}}</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+
+        <label>Nom</label>
+        <input type="text" class="form-control" formControlName="nom" required>
+      <br/>
+      <span>
+        <button type="submit" class="btn btn-success">Modifier</button>
+    <button class="btn btn-danger" (click)="cancel()">Annuler</button>
+      </span>
+    </form>
+  <br/>
+
+
+</div>

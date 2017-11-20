@@ -1,0 +1,39 @@
+<h2 *ngIf="this.reflivre">Détail de la référence {{reflivre.id}} {{reflivre.libelle}}</h2>
+<div *ngIf="this.reflivre">
+  <table class="table">
+    <tr>
+      <th><label>ID : </label></th>
+      <th><label>{{reflivre.id}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Libelle :</label></th>
+      <th><label>{{reflivre.libelle}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Auteur :</label></th>
+      <th><label>{{reflivre.auteur}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Editeur :</label></th>
+      <th><label>{{reflivre.editeur.nom}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Matiere :</label></th>
+      <th><label>{{reflivre.matiere.libelle}} </label></th>
+    </tr>
+    <tr>
+      <th><label>ISBN :</label></th>
+      <th><label>{{reflivre.isbn}} </label></th>
+    </tr>
+  </table>
+  <p-dataTable *ngIf="this.refpxlvr" [value]="refpxlvr" [rows]="10" [paginator]="true">
+    <p-column field="etat.libelle" header="Etat"></p-column>
+    <p-column field="refpxlvr.prixvente" header="Vente" [sortable]="true" [editable]="true"></p-column>
+    <p-column field="refpxlvr.prixrachat" header="Rachat" [sortable]="true" [editable]="true"></p-column>
+  </p-dataTable>
+  <br/>
+  <span>
+  <button type="button" class="btn btn-danger" (click)="back()">Retour</button>
+  <button class="btn btn-success" (click)="back()">Modifier</button>
+  </span>
+</div>

@@ -1,0 +1,25 @@
+<h2>Liste des Editeurs</h2>
+<br/>
+<button (click)="create()"class="btn btn-primary">Créer un nouvel editeur</button>
+<br/><br/>
+<div>
+  <div>
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input #gb type="text" pInputText size="50" placeholder="Filtre">
+    </div>
+
+    <p-dataTable [value]="editeurs" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt>
+      <p-column field="id" header="Identifiant" [sortable]="true"></p-column>
+      <p-column field="nom" header="Nom" [sortable]="true"></p-column>
+      <p-column field="modif" header="Action" >
+        <ng-template let-editeur="rowData" pTemplate="body">
+          <button type="button" pButton (click)="show(editeur.id)" class="btn btn-primary">Consulter</button>
+          <button type="button" pButton (click)="edit(editeur.id)" class="btn btn-primary">Modifier</button>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>
+
+
+

@@ -1,0 +1,45 @@
+<div>
+  <h2 *ngIf="this.classe" >Détails de la classe {{classe.id}} - {{classe.libelle}} </h2>
+  <p-tabView orientation="left" >
+    <p-tabPanel header="Détails" [selected]="true">
+      <div *ngIf="this.classe">
+        <table class="table">
+          <tr>
+            <th><label>ID : </label></th>
+            <th><label>{{classe.id}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Libellé :</label></th>
+            <th><label>{{classe.libelle}} </label></th>
+          </tr>
+        </table>
+      </div>
+    </p-tabPanel>
+
+    <p-tabPanel header="Picklist" >
+      <div *ngIf="selectedLivres">
+        <p-pickList [source]="availableLivres" [target]="selectedLivres" sourceHeader="Livres existants" targetHeader="Livres sélectionnés"
+                    [responsive]="true" [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}">
+          <ng-template let-reflivre pTemplate="item">
+            <table>
+              <tr>
+                <th>ISBN: {{reflivre.isbn}}</th>
+              </tr>
+              <tr>
+                <td>Matière: {{reflivre.libelle}}</td>
+              </tr>
+            </table>
+          </ng-template>
+        </p-pickList>
+      </div>
+
+      <br/>
+      <button (click)="save()" class="btn btn-primary">Enregistrer la selection</button>
+
+    </p-tabPanel>
+  </p-tabView>
+  <br/>
+  <span>
+  <button type="button" class="btn btn-danger" (click)="back()">Retour</button>
+  </span>
+</div>

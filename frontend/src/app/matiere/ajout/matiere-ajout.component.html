@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>Creer une matiere</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+        <label>Libelle</label>
+        <input type="text" class="form-control" formControlName="libelle" required>
+      <button type="submit" class="btn btn-success">Creer la matiere</button>
+      <button class="btn btn-danger" (click)="cancel()">Annuler</button>
+    </form>
+</div>
+

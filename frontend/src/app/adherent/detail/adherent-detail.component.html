@@ -1,0 +1,80 @@
+<div>
+  <h2 *ngIf="this.adherent">Détail de l'adhérent {{adherent.nom}} {{adherent.prenom}}</h2>
+
+  <p-tabView orientation="left">
+    <p-tabPanel header="Détails" [selected]="true">
+      <div *ngIf="this.adherent">
+        <table class="table">
+          <tr>
+            <th><label>ID : </label></th>
+            <th><label>{{adherent.id}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Nom :</label></th>
+            <th><label>{{adherent.nom}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Prenom :</label></th>
+            <th><label>{{adherent.prenom}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Adresse :</label></th>
+            <th><label>{{adherent.adresse}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Code postal :</label></th>
+            <th><label>{{adherent.codePostal}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Ville :</label></th>
+            <th><label>{{adherent.ville}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Mail :</label></th>
+            <th><label>{{adherent.mail}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Téléphone :</label></th>
+            <th><label>{{adherent.tel}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Téléphone secondaire :</label></th>
+            <th><label>{{adherent.tel2}} </label></th>
+          </tr>
+          <tr>
+            <th><label>Comité :</label></th>
+            <th ><label *ngIf='adherent.comite==true'>OUI </label>
+            <label *ngIf='adherent.comite==false'>NON </label></th>
+          </tr>
+          <tr>
+            <th><label>Conseil de classe :</label></th>
+            <th ><label *ngIf='adherent.conseil==true'>OUI </label>
+            <label *ngIf='adherent.conseil==false'>NON </label></th>
+          </tr>
+        </table>
+        <br/>
+        <button type="submit" class="btn btn-success" (click)="edit()">Modifier</button>
+        <button class="btn btn-danger" (click)="back()">Annuler</button>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="Élèves">
+        <div>
+          <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+            <input #gb type="text" pInputText size="50" placeholder="Filtre">
+          </div>
+          <p-dataTable [value]="lesElevesDeLAdherent" [rows]="10" [paginator]="true" [globalFilter]="gb" #dt>
+            <p-column field="id" header="Identifiant" [sortable]="true"></p-column>
+            <p-column field="nom" header="Nom" [sortable]="true"></p-column>
+            <p-column field="prenom" header="Prenom" [sortable]="true"></p-column>
+            <p-column field="modif" header="Action" >
+              <ng-template let-eleve="rowData" pTemplate="body">
+                <button type="button" pButton (click)="show(eleve.id)" class="btn btn-primary">Consulter</button>
+                <button type="button" pButton (click)="edit(eleve.id)" class="btn btn-primary">Modifier</button>
+              </ng-template>
+            </p-column>
+          </p-dataTable>
+        </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>

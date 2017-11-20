@@ -1,0 +1,17 @@
+<h2 *ngIf="this.editeur">Détail de l'éditeur' {{editeur.id}} {{editeur.nom}}</h2>
+<div *ngIf="this.editeur">
+  <table class="table">
+    <tr>
+      <th><label>ID : </label></th>
+      <th><label>{{editeur.id}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Nom :</label></th>
+      <th><label>{{editeur.nom}} </label></th>
+    </tr>
+  </table>
+  <br/>
+  <span>
+  <button type="button" class="btn btn-danger" (click)="back()">Retour</button>
+    </span>
+</div>

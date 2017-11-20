@@ -1,0 +1,50 @@
+<h2 *ngIf="this.eleve">Détail de l'élève {{eleve.nom}} {{eleve.prenom}}</h2>
+<div *ngIf="this.eleve">
+  <table class="table">
+    <tr>
+      <th><label>ID : </label></th>
+      <th><label>{{eleve.id}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Nom :</label></th>
+      <th><label>{{eleve.nom}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Prenom :</label></th>
+      <th><label>{{eleve.prenom}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Date de naissance :</label></th>
+      <th><label>{{eleve.dateNaissance}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Mail :</label></th>
+      <th><label>{{eleve.mail}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Téléphone :</label></th>
+      <th><label>{{eleve.tel}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Remarques :</label></th>
+      <th><label>{{eleve.remarques}} </label></th>
+    </tr>
+      <tr *ngIf="this.eleve.adherent">
+        <th><label>Id de l'adhérent:</label></th>
+        <th><label>{{eleve.adherent.id}} </label></th>
+      </tr>
+      <tr *ngIf="this.eleve.adherent">
+        <th><label>Nom et prénom de l'adhérent:</label></th>
+        <th><label>{{eleve.adherent.nom}} {{eleve.adherent.prenom}}</label></th>
+      </tr>
+  </table>
+  <br/>
+  <br/>
+
+  <div *ngIf="this.adherents">
+
+  <span>
+  <button type="submit" class="btn btn-success">Modifier</button>
+    <button type="button" class="btn btn-danger" (click)="back()">Retour</button>
+      </span>
+  </div>

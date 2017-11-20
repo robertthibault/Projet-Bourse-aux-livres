@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Creer un editeur</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+        <label>Nom</label>
+        <input type="text" class="form-control" formControlName="nom" required>
+      <button type="submit" class="btn btn-success">Creer l'editeur'</button>
+      <button class="btn btn-danger" (click)="cancel()">Annuler</button>
+    </form>
+</div>

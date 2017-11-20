@@ -1,0 +1,29 @@
+<div class="container">
+    <h1>Creer un adhérent</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+        <label>Nom</label>
+        <input type="text" class="form-control" formControlName="nom" required>
+        <label>Prenom</label>
+        <input type="text" class="form-control" formControlName="prenom">
+        <label>Adresse</label>
+        <input type="text" class="form-control" formControlName="adresse">
+        <label>Code Postal</label>
+        <input type="number" class="form-control" formControlName="codePostal">
+        <label>Ville</label>
+        <input type="text" class="form-control" formControlName="ville">
+        <label>Téléphone 1 </label>
+        <input type="text" class="form-control" formControlName="tel1">
+        <label>Téléphone 2 </label>
+        <input type="text" class="form-control" formControlName="tel2">
+        <label>E-mail</label>
+        <input type="email" class="form-control" formControlName="email">
+        <label>Conseil de classe</label>
+        <input type="checkbox" class="form-control" formControlName="conseil">
+        <label>Comité</label>
+        <input type="checkbox" ngModel="" class="form-control" formControlName="comite">
+      <span>
+        <button type="submit" class="btn btn-success">Creer l'adhérent</button>
+        <button type="submit" class="btn btn-danger" (click)="back()">Annuler</button>
+      </span>
+    </form>
+</div>

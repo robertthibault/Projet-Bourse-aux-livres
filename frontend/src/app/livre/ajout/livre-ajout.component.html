@@ -1,0 +1,16 @@
+<div class="container">
+  <h1> Ajouter un livre </h1>
+  <form novalidate [formGroup]="form" (ngSubmit)="save()">
+    <label>Référence de livre</label>
+    <p-dropdown formControlName="lesRefLivres" [style]="{'width':'100%'}" [options]="lesRefLivres" [(ngModel)]="selectedRefLivre" placeholder="Selectionnez une référence"></p-dropdown>
+    <label>Etat</label>
+    <p-dropdown formControlName="lesEtats" [style]="{'width':'100%'}" [options]="lesEtats" [(ngModel)]="selectedEtat" placeholder="Selectionnez un état"></p-dropdown>
+
+    <!--<label>IdRefLivre</label>
+    <input type="text" class="form-control" formControlName="IdRefLivre">-->
+<span>
+    <button type="submit" class="btn btn-success">Ajouter un livre </button>
+    <button type="button" class="btn btn-danger" (click)="cancel()">Annuler</button>
+</span>
+  </form>
+</div>

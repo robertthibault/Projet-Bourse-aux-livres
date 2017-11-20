@@ -1,0 +1,11 @@
+<div class="container">
+    <h1>Creer une classe</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+        <label>Libellé</label>
+        <input type="text" class="form-control" formControlName="libelle" required>
+      <span>
+      <button type="submit" class="btn btn-success">Creer la classe</button>
+      <button class="btn btn-danger" (click)="back()">Annuler</button>
+      </span>
+    </form>
+</div>

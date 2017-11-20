@@ -1,0 +1,35 @@
+<h2 *ngIf="this.livre">Détail du livre {{livre.id}} {{livre.reflivre.libelle}}</h2>
+<div *ngIf="this.livre">
+  <table class="table">
+    <tr>
+      <th><label>ID du livre: </label></th>
+      <th><label>{{livre.id}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Libelle :</label></th>
+      <th><label>{{livre.reflivre.libelle}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Auteur :</label></th>
+      <th><label>{{livre.reflivre.auteur}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Editeur :</label></th>
+      <th><label>{{livre.reflivre.editeur.nom}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Matiere :</label></th>
+      <th><label>{{livre.reflivre.matiere.libelle}} </label></th>
+    </tr>
+    <tr>
+      <th><label>ISBN :</label></th>
+      <th><label>{{livre.reflivre.isbn}} </label></th>
+    </tr>
+    <tr>
+      <th><label>Etat :</label></th>
+      <th><label>{{livre.etat.libelle}} </label></th>
+    </tr>
+    </table>
+  <br/>
+  <button class="btn btn-danger" (click)="back()">Retour</button>
+</div>

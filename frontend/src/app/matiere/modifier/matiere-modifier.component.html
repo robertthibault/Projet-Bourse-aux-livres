@@ -1,0 +1,15 @@
+<div *ngIf='this.matiere' class="container">
+    <h1>Modifier les informations de la matiere : {{matiere.id}} - {{matiere.libelle}}</h1>
+    <form novalidate [formGroup]="form" (ngSubmit)="save()">
+      <label>Libellé</label>
+      <input type="text" class="form-control" formControlName="libelle" required>
+      <br/>
+      <span>
+        <button type="submit" class="btn btn-success">Modifier</button>
+    <button class="btn btn-danger" (click)="cancel()">Annuler</button>
+      </span>
+    </form>
+  <br/>
+
+
+</div>

@@ -1,0 +1,20 @@
+<div class="container">
+  <h1> Ajouter une référence </h1>
+  <form novalidate [formGroup]="form" (ngSubmit)="save()">
+
+    <label>Libelle</label>
+    <input type="text" class="form-control" formControlName="libelle" required>
+    <label>Auteur</label>
+    <input type="text" class="form-control" formControlName="auteur">
+    <label>Editeur</label>
+    <p-dropdown formControlName="idEditeur" [style]="{'width':'100%'}" [options]="lesEditeurs" [(ngModel)]="selectedEditeur" placeholder="Selectionnez un éditeur"></p-dropdown>
+    <label>Matiere</label>
+    <p-dropdown formControlName="idMatiere" [style]="{'width':'100%'}" [options]="lesMatieres" [(ngModel)]="selectedMatiere" placeholder="Selectionnez une matière"></p-dropdown>
+    <label>ISBN</label>
+    <input type="text" class="form-control" formControlName="isbn">
+    <br/>
+    <button type="submit" class="btn btn-success">Ajouter un livre </button>
+    <button class="btn btn-danger" (click)="cancel()">Annuler</button>
+  </form>
+
+</div>
